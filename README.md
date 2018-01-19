@@ -1,8 +1,8 @@
 # DeepMusic
 Generation and classification of music
 
-#Music Genre Classification 
-##Data :
+# Music Genre Classification 
+## Data :
  -  FMA - Music metadata : https://os.unil.cloud.switch.ch/fma/fma_metadata.zip
  
         * `tracks.csv`: per track metadata such as ID, title, artist, genres, tags and play counts, for all 106,574 tracks.
@@ -20,4 +20,4 @@ Neural Network :
 
 # Music Generation
 
-##Data :
+## Data :
