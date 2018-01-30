@@ -16,16 +16,19 @@
 		- Arranged in a hierarchical taxonomy of 161 genres.
 		
 	   
-		 **[fma_small.zip]**: 8,000 tracks of 30s, 8 balanced genres (GTZAN-like) (7.2 GiB)
-		 **[fma_medium.zip]**: 25,000 tracks of 30s, 16 unbalanced genres (22 GiB)
-		 **[fma_large.zip]**: 106,574 tracks of 30s, 161 unbalanced genres (93 GiB)
-		 **[fma_full.zip]**: 106,574 untrimmed tracks, 161 unbalanced genres (879 GiB)
 
-		[fma_metadata.zip]: https://os.unil.cloud.switch.ch/fma/fma_metadata.zip
-		[fma_small.zip]:    https://os.unil.cloud.switch.ch/fma/fma_small.zip
-		[fma_medium.zip]:   https://os.unil.cloud.switch.ch/fma/fma_medium.zip
-		[fma_large.zip]:    https://os.unil.cloud.switch.ch/fma/fma_large.zip
-		[fma_full.zip]:     https://os.unil.cloud.switch.ch/fma/fma_full.zip
+1. **[fma_small.zip]**: 8,000 tracks of 30s, 8 balanced genres (GTZAN-like) (7.2 GiB)
+2. **[fma_medium.zip]**: 25,000 tracks of 30s, 16 unbalanced genres (22 GiB)
+3. **[fma_large.zip]**: 106,574 tracks of 30s, 161 unbalanced genres (93 GiB)
+4. **[fma_full.zip]**: 106,574 untrimmed tracks, 161 unbalanced genres (879 GiB)
+
+[fma_metadata.zip]: https://os.unil.cloud.switch.ch/fma/fma_metadata.zip
+[fma_small.zip]:    https://os.unil.cloud.switch.ch/fma/fma_small.zip
+[fma_medium.zip]:   https://os.unil.cloud.switch.ch/fma/fma_medium.zip
+[fma_large.zip]:    https://os.unil.cloud.switch.ch/fma/fma_large.zip
+[fma_full.zip]:     https://os.unil.cloud.switch.ch/fma/fma_full.zip
+
+
 
 
 		
