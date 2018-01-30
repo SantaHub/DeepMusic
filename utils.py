@@ -1,4 +1,4 @@
-import dotenv
+#import dotenv
 import pydot
 import requests
 import numpy as np
@@ -8,7 +8,7 @@ import shutil
 import multiprocessing
 import multiprocessing.sharedctypes as sharedctypes
 import os.path
-import ast
+#import ast
 
 
 # Number of samples per 30s audio clip.
@@ -17,7 +17,7 @@ NB_AUDIO_SAMPLES = 1321967
 SAMPLING_RATE = 44100
 
 # Load the environment from the .env file.
-dotenv.load_dotenv(dotenv.find_dotenv())
+#dotenv.load_dotenv(dotenv.find_dotenv())
 
 
 class FreeMusicArchive:
