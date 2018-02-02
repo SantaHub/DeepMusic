@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# FMA: A Dataset For Music Analysis
-# Michaël Defferrard, Kirell Benzi, Pierre Vandergheynst, Xavier Bresson, EPFL LTS2.
-
 import os
 import sys
 import shutil
