@@ -1,16 +1,5 @@
 #!/usr/bin/env python3
 
-# FMA: A Dataset For Music Analysis
-# Michaël Defferrard, Kirell Benzi, Pierre Vandergheynst, Xavier Bresson, EPFL LTS2.
-
-# All features are extracted using [librosa](https://github.com/librosa/librosa).
-# Alternatives:
-# * [Essentia](http://essentia.upf.edu) (C++ with Python bindings)
-# * [MARSYAS](https://github.com/marsyas/marsyas) (C++ with Python bindings)
-# * [RP extract](http://www.ifs.tuwien.ac.at/mir/downloads.html) (Matlab, Java, Python)
-# * [jMIR jAudio](http://jmir.sourceforge.net) (Java)
-# * [MIRtoolbox](https://www.jyu.fi/hum/laitokset/musiikki/en/research/coe/materials/mirtoolbox) (Matlab)
-
 import os
 import multiprocessing
 import warnings
@@ -40,7 +29,6 @@ def columns():
     names = ('feature', 'statistics', 'number')
     columns = pd.MultiIndex.from_tuples(columns, names=names)
 
-    # More efficient to slice if indexes are sorted.
     return columns.sort_values()
 
 

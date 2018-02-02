@@ -42,13 +42,6 @@ tracks = utils.load('data/tracks.csv')
 features = utils.load('data/features.csv')
 echonest = utils.load('data/echonest.csv')
 
-tracks = pd.read_csv('data/tracks.csv')
-tracks=tracks.head(2000)
-features = pd.read_csv('data/features.csv')
-features = features.head(2000)
-echonest = pd.read_csv('data/echonest.csv')
-echonest = echonest.head(2000)
-
 tracks = tracks.fillna(-1)
 features = features.fillna(-1)
 echonest = echonest.fillna(-1)
@@ -110,7 +103,22 @@ def format_scores(scores):
     scores = scores.style.apply(highlight, axis=1)
     return scores.format('{:.2%}', subset=pd.IndexSlice[:, scores.columns[1]:])
 
-
+classifiers = {
+    'LR': LogisticRegression(),
+    'kNN': KNeighborsClassifier(n_neighbors=200),
+    'SVCrbf': SVC(kernel='rbf'),
+    'SVCpoly1': SVC(kernel='poly', degree=1),
+    'linSVC1': SVC(kernel="linear"),
+    'linSVC2': LinearSVC(),
+    #GaussianProcessClassifier(1.0 * RBF(1.0), warm_start=True),
+    'DT': DecisionTreeClassifier(max_depth=5),
+    'RF': RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
+    'AdaBoost': AdaBoostClassifier(n_estimators=10),
+    'MLP1': MLPClassifier(hidden_layer_sizes=(100,), max_iter=2000),
+    'MLP2': MLPClassifier(hidden_layer_sizes=(200, 50), max_iter=2000),
+    'NB': GaussianNB(),
+    'QDA': QuadraticDiscriminantAnalysis(),
+}
 
 feature_sets = {
 #    'echonest_audio': ('echonest', 'audio_features'),

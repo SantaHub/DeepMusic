@@ -1,5 +1,5 @@
 #import dotenv
-import pydot
+#import pydot
 import requests
 import numpy as np
 import pandas as pd
@@ -299,7 +299,7 @@ class FfmpegLoader(RawAudioLoader):
         return np.fromstring(proc.stdout, dtype="int16")
 
 
-def build_sample_loader(audio_dir, Y, loader):
+def a(audio_dir, Y, loader):
 
     class SampleLoader:
 
@@ -315,7 +315,7 @@ def build_sample_loader(audio_dir, Y, loader):
 
             self.batch_size = batch_size
             self.loader = loader
-            self.X = np.empty((self.batch_size, *loader.shape))
+#            self.X = np.empty((self.batch_size, *loader.shape))
             self.Y = np.empty((self.batch_size, Y.shape[1]), dtype=np.int)
 
         def __iter__(self):
