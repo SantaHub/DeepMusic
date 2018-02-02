@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 
 import os
 import multiprocessing
@@ -11,6 +10,10 @@ import pandas as pd
 import librosa
 
 import utils
+import pickle
+
+label = [ 'Blues', 'Classical', 'Country', 'Easy Listening', 'Electronic', 'Hip-Hop', 'Folk', 'Experimental', 'Instrumental', 'International',
+ 'Jazz', 'Old-Time / Historic', 'Pop', 'Rock', 'Soul-RnB', 'Spoken']
 
 
 def columns():
@@ -31,12 +34,9 @@ def columns():
 
     return columns.sort_values()
 
-
-def compute_features(tid):
+def compute_features(filepath, tid):
 
     features = pd.Series(index=columns(), dtype=np.float32, name=tid)
-
-    # Catch warnings as exceptions (audioread leaks file descriptors).
     warnings.filterwarnings('error', module='librosa')
 
     def feature_stats(name, values):
@@ -49,7 +49,6 @@ def compute_features(tid):
         features[name, 'max'] = np.max(values, axis=1)
 
     try:
-        filepath = utils.get_audio_path(os.environ.get('AUDIO_DIR'), tid)
         x, sr = librosa.load(filepath, sr=None, mono=True)  # kaiser_fast
 
         f = librosa.feature.zero_crossing_rate(x, frame_length=2048, hop_length=512)
@@ -98,54 +97,11 @@ def compute_features(tid):
 
     return features
 
+file = raw_input("Enter music path : ")
+features =  compute_features(file,1)
 
-def main():
-    tracks = utils.load('tracks.csv')
-    features = pd.DataFrame(index=tracks.index,
-                            columns=columns(), dtype=np.float32)
+with open('./model/SVC.pkl','rb') as model:
+    clf = pickle.load(model)
 
-    # More than usable CPUs to be CPU bound, not I/O bound. Beware memory.
-    nb_workers = int(1.5 * len(os.sched_getaffinity(0)))
-
-    # Longest is ~11,000 seconds. Limit processes to avoid memory errors.
-    table = ((5000, 1), (3000, 3), (2000, 5), (1000, 10), (0, nb_workers))
-    for duration, nb_workers in table:
-        print('Working with {} processes.'.format(nb_workers))
-
-        tids = tracks[tracks['track', 'duration'] >= duration].index
-        tracks.drop(tids, axis=0, inplace=True)
-
-        pool = multiprocessing.Pool(nb_workers)
-        it = pool.imap_unordered(compute_features, tids)
-
-        for i, row in enumerate(tqdm(it, total=len(tids))):
-            features.loc[row.name] = row
-
-            if i % 1000 == 0:
-                save(features, 10)
-
-    save(features, 10)
-    test(features, 10)
-
-
-def save(features, ndigits):
-
-    # Should be done already, just to be sure.
-    features.sort_index(axis=0, inplace=True)
-    features.sort_index(axis=1, inplace=True)
-
-    features.to_csv('features.csv', float_format='%.{}e'.format(ndigits))
-
-
-def test(features, ndigits):
-
-    indices = features[features.isnull().any(axis=1)].index
-    if len(indices) > 0:
-        print('Failed tracks: {}'.format(', '.join(str(i) for i in indices)))
-
-    tmp = utils.load('features.csv')
-    np.testing.assert_allclose(tmp.values, features.values, rtol=10**-ndigits)
-
-
-if __name__ == "__main__":
-    main()
+y_pred = clf.predict(features.values.reshape(1,-1))
+print( label[y_pred[0]] )
