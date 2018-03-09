@@ -9,8 +9,16 @@ from scipy import stats
 import pandas as pd
 import librosa
 
-import utils
+#import utils
 import pickle
+
+import train_network
+import preprocess_data
+
+preprocess_data.preprocess_dataset()
+
+X_train, Y_train, paths_train, X_test, Y_test, paths_test, class_names, sr = train_network.build_datasets(preproc=True)
+
 
 label = [ 'Blues', 'Classical', 'Country', 'Easy Listening', 'Electronic', 'Hip-Hop', 'Folk', 'Experimental', 'Instrumental', 'International',
  'Jazz', 'Old-Time / Historic', 'Pop', 'Rock', 'Soul-RnB', 'Spoken']
@@ -36,8 +44,10 @@ def columns():
 
 def compute_features(filepath, tid):
 
-    features = pd.Series(index=columns(), dtype=np.float32, name=tid)
-    warnings.filterwarnings('error', module='librosa')
+    preprocess_data.preprocess_dataset()
+    # features = pd.Series(index=columns(), dtype=np.float32, name=tid)
+    # warnings.filterwarnings('error', module='librosa')
+    return "done"
 
     def feature_stats(name, values):
         features[name, 'mean'] = np.mean(values, axis=1)
@@ -97,7 +107,7 @@ def compute_features(filepath, tid):
 
     return features
 
-file = raw_input("Enter music path : ")
+file = raw_input("Enter music dir : ")
 features =  compute_features(file,1)
 
 with open('./model/SVC.pkl','rb') as model:
