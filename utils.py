@@ -1,6 +1,6 @@
 #import dotenv
 #import pydot
-import requests
+#import requests
 import numpy as np
 import pandas as pd
 import ctypes
@@ -294,12 +294,12 @@ class FfmpegLoader(RawAudioLoader):
             command.extend(['-ar', str(self.sampling_rate)])
         command.append('-')
         # 30s at 44.1 kHz ~= 1.3e6
-        proc = sp.run(command, stdout=sp.PIPE, bufsize=10**7, stderr=sp.DEVNULL, check=True)
+        proc = sp.run(command, stdout=sp.PIPE, bufsize=10**7, stderr=sp.DEVNULL)
 
         return np.fromstring(proc.stdout, dtype="int16")
 
 
-def a(audio_dir, Y, loader):
+def build_sample_loader(audio_dir, Y, loader):
 
     class SampleLoader:
 
