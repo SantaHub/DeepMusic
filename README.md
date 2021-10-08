@@ -1,5 +1,5 @@
 # DeepMusic
-Generation and classification of music
+Generation and classification of music using Capsule Neural Networks. (Modified CNN)
 
 # Music Genre Classification 
 ## Data :
