@@ -23,6 +23,8 @@ Generation and classification of music using Capsule Neural Networks. (Modified 
  -  FMA
        - 1L music files. : https://os.unil.cloud.switch.ch/fma/fma_metadata.zip
        - music features generated : librosa : https://github.com/librosa/librosa
+- GTZAN Music Genre classification 
+      - https://www.kaggle.com/andradaolteanu/gtzan-dataset-music-genre-classification/download
        
 
         * `tracks.csv`: per track metadata such as ID, title, artist, genres, tags and play counts, for all 106,574 tracks.
