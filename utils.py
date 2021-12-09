@@ -1,6 +1,6 @@
 #import dotenv
 #import pydot
-#import requests
+import requests
 import numpy as np
 import pandas as pd
 import ctypes

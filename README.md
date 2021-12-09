@@ -3,19 +3,20 @@ Generation and classification of music using Capsule Neural Networks. (Modified 
 
 ## Folder structure 
 
-Presentation :
- - Images : contianers images of ML and DL : accuracy, Loss and model code.
- - content.md : Plan for this research paper
- - demo.py : Used to demo the models build in the repo. Loads and predicts music.
-baseline.ipynb : A notebook to find baseline efficiency using sci-kit models
-creation.py : donwloads traims and create zips of music data with normalization.
-featureGen.ipynb : generate and prints features from an MP3.
-feature.py : create features and save them as train and test.
-ml.py : Uses the given classifier and train and test the model.
-Resource : Informations and links to the topic resources
-setup.py : for the ownership of the proejct from baseline.ipynb
-train_network_work.py : Data modeling and triaining for LSTM, CNN.
-utils.py : Downloads and loads track from FMA
+ -  Presentation
+       - test : test
+       - Images : contianers images of ML and DL : accuracy, Loss and model code.
+       - content.md : Plan for this research paper
+       - demo.py : Used to demo the models build in the repo. Loads and predicts music.
+- baseline.ipynb : A notebook to find baseline efficiency using sci-kit models
+- creation.py : donwloads traims and create zips of music data with normalization.
+- featureGen.ipynb : generate and prints features from an MP3.
+- feature.py : create features and save them as train and test.
+- ml.py : Uses the given classifier and train and test the model.
+- Resource : Informations and links to the topic resources
+- setup.py : for the ownership of the proejct from baseline.ipynb
+- train_network_work.py : Data modeling and triaining for LSTM, CNN.
+- utils.py : Downloads and loads track from FMA
 
 # Music Genre Classification 
 ## Data :
